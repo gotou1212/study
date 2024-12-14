@@ -9,11 +9,15 @@ function App() {
   return (
 
  <div>
- <button className="red-button">click</button>
- <button className="blue-button">test2</button>
+ <h2>TODOアプリ</h2>
+ <ul>
+ <li><input type="text" placeholder='タイトル'></input><button className="red-button">追加</button></li>
+ <li><input type="checkbox"></input><span className="bake">1234</span><span><button className="blue-button">削除</button></span></li>
+ <li><input type="checkbox"></input><span class="neko">222</span><button className="yellow-button">削除</button></li>
+ <li><input type='text' placeholder="検索"></input></li>
+</ul>
 
-{/* TODO yellow-buttonで黄色のボ黄色のボタンを作ってみる*/}
-{/*TODO高さ２００px 横幅２００pxのボタンを作ってみる。cssのwidth,heightを調べてみる*/}
+
 </div>
   )
 }
