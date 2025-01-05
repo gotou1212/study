@@ -1,24 +1,59 @@
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// 状態 -> State
+// on〇〇 -> イベントハンドラー上で状態を変更する
 function App() {
-  const [count, setCount] = useState(0)
+  const [todoList, setTodoList] = useState([
+    "todo1",
+    "todo2",
+    "todo3",
+    "todo4"
+  ]);
+
+  const handleClick = () => {
+    const newTodoList = todoList.map((todo) => {
+      return todo + "a";
+    })
+
+    // console.log(newTodoList);
+    setTodoList(newTodoList);
+  }
 
   return (
+    <div className='todoapp'>
+      <div className='todoapp-title'>TODOアプリ</div>
 
- <div>
- <h2>TODOアプリ</h2>
- <ul>
- <li><input type="text" placeholder='タイトル'></input><button className="red-button">追加</button></li>
- <li><input type="checkbox"></input><span className="bake">1234</span><span><button className="blue-button">削除</button></span></li>
- <li><input type="checkbox"></input><span class="neko">222</span><button className="yellow-button">削除</button></li>
- <li><input type='text' placeholder="検索"></input></li>
-</ul>
+      <div className='todoapp-add'>
+        <input type="text" className='todoapp-input__add' />
+        <button
+          className='todoapp-button__add'
+          onClick={(e) => {
+            handleClick();
+          }}
+        >
+          追加
+        </button>
+      </div>
 
+      <ul className=''>
+        {todoList?.map(todo => {
+          return (
+            <div key={todo}>
+              {todo}
+            </div>
+          )
+        })}
+      </ul>
 
-</div>
+      <div>
+        <input type="text" className='todoapp-input__search' />
+      </div>
+
+    </div>
   )
 }
 
