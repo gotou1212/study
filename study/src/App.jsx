@@ -1,60 +1,41 @@
+import React from "react";
 
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-// 状態 -> State
-// on〇〇 -> イベントハンドラー上で状態を変更する
 function App() {
-  const [todoList, setTodoList] = useState([
-    "todo1",
-    "todo2",
-    "todo3",
-    "todo4"
-  ]);
+  
+  const students = [
+    { name: "太郎", scores: [85, 90, 78] }, 
+    { name: "花子", scores: [88, 76, 92] },
+    { name: "次郎", scores: [80, 85, 87] },
+    { name: "一郎", scores: [75, 88, 80] },
+  ];
 
-  const handleClick = () => {
-    const newTodoList = todoList.map((todo) => {
-      return todo + "a";
-    })
-
-    // console.log(newTodoList);
-    setTodoList(newTodoList);
-  }
+  const subjects = ["国語", "数学", "英語"]; 
 
   return (
-    <div className='todoapp'>
-      <div className='todoapp-title'>TODOアプリ</div>
-
-      <div className='todoapp-add'>
-        <input type="text" className='todoapp-input__add' />
-        <button
-          className='todoapp-button__add'
-          onClick={(e) => {
-            handleClick();
-          }}
-        >
-          追加
-        </button>
-      </div>
-
-      <ul className=''>
-        {todoList?.map(todo => {
-          return (
-            <div key={todo}>
-              {todo}
-            </div>
-          )
-        })}
-      </ul>
-
-      <div>
-        <input type="text" className='todoapp-input__search' />
-      </div>
-
+    <div style={{ padding: "20px" }}>
+      <h1>クラスの成績一覧</h1>
+      <table border="1" cellPadding="5" style={{ borderCollapse: "collapse" }}>
+        <thead>
+          <tr>
+            <th>名前</th>
+            {subjects.map((subject, index) => (
+              <th key={index}>{subject}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student, index) => (
+            <tr key={index}>
+              <td>{student.name}</td>
+              {student.scores.map((score, scoreIndex) => (
+                <td key={scoreIndex}>{score}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
